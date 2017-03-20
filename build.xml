@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+Build file to build jar file and javadoc. 
+Note: this library should be Java 7 compatible.
+-->
+
+<project name="salt-aa" default="jar" basedir=".">
+
+<target name="compile" 
+    description="compiles files, copies resources, output to out/classes">
+    
+    <mkdir dir="out/classes"/>
+
+    <javac srcdir="src" destdir="out/classes" source="1.7" target="1.7">
+    </javac>
+
+    <copy todir="out/classes">
+        <fileset dir="src">
+            <exclude name="**/*.java"/>
+            <exclude name="**/package.html"/>
+        </fileset>
+    </copy>
+</target>
+    
+<target name="clean" description="">
+    <delete includeemptydirs="true" quiet="true">
+        <fileset dir="out" includes="**/*"/>
+    </delete>
+</target>
+
+<target name="jar" description="creates jar file" depends="compile">
+	<delete file="out/salt-aa.jar"/>	
+	<jar destfile="out/salt-aa.jar">
+	    <fileset dir="out/classes"/>
+    </jar>
+</target>
+
+<target name="javadoc" description="Creates javadoc.">
+    <mkdir dir="out/javadoc"/>
+    <javadoc destdir="out/javadoc"
+            doctitle="Salt Channel"
+            windowtitle="Salt Channel API"
+            encoding="utf-8"
+	        classpath="lib/*:out">
+    	
+        <packageset dir="src" defaultexcludes="yes">
+            <include name="**"/>
+        </packageset>
+    </javadoc>	
+</target>
+
+</project>
+
