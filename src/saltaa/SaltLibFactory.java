@@ -22,7 +22,7 @@ public class SaltLibFactory {
      * Returns a list of all SaltLib implementations.
      */
     public static List<SaltLib> getAllLibs() {
-        return Arrays.asList((SaltLib) new JavaSaltLib());
+        return Arrays.asList((SaltLib) new JavaSaltLib(), (SaltLib) new NativeSaltLib());
     }
     
     public static SaltLib getLib(LibType type) {
@@ -32,7 +32,7 @@ public class SaltLibFactory {
         case JAVA:
             return new JavaSaltLib();
         case NATIVE:
-            throw new Error("NATIVE lib not implemented yet");
+            return new NativeSaltLib();
         default:
             return getLib(LibType.JAVA);
         }

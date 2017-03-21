@@ -32,7 +32,11 @@ Note: this library should be Java 7 compatible.
 	<delete file="out/salt-aa.jar"/>	
 	<jar destfile="out/salt-aa.jar">
 	    <fileset dir="out/classes"/>
-    </jar>
+	    <zipgroupfileset dir="lib" includes="*.jar" />
+            <fileset dir=".">
+              <include name="**/lib/**"/>
+           </fileset>
+        </jar>
 </target>
 
 <target name="javadoc" description="Creates javadoc.">
@@ -47,6 +51,52 @@ Note: this library should be Java 7 compatible.
             <include name="**"/>
         </packageset>
     </javadoc>	
+</target>
+
+<target name="compileTest"  depends="compile" description="compiles files, copies resources, output to out/classes">
+
+    <mkdir dir="out/classes-test"/>
+
+    <path id="classpath-test">
+        <fileset dir="lib-dev">
+            <include name="**/*.jar" />
+        </fileset>
+        <pathelement path="out/classes"/>
+        <pathelement path="out/classes-test"/>
+    </path>
+
+    <javac srcdir="src-test" destdir="out/classes-test" source="1.7" target="1.7">
+        <classpath refid="classpath-test" />
+    </javac>
+
+    <copy todir="out/classes-test">
+        <fileset dir="src-test">
+            <exclude name="**/*.java"/>
+            <exclude name="**/package.html"/>
+        </fileset>
+    </copy>
+</target>
+
+<target name="test" depends="compileTest">
+  <junit fork="yes" printsummary="on" haltonerror="on" haltonfailure="on" showoutput="true">
+    <jvmarg value="-Xcheck:jni" />   
+    <jvmarg value="-verbose:gc" />    
+    <classpath>
+      <pathelement location="lib-dev/junit-4.12.jar"/>
+      <pathelement location="lib-dev/hamcrest-core-1.3.jar"/>
+      <pathelement location="out/classes" />    
+      <pathelement location="out/classes-test" />
+    </classpath>    
+    <batchtest>
+       <fileset dir="out/classes-test">
+            <include name="**/*Test.class" />
+       </fileset>
+    </batchtest>
+    <formatter type="plain" usefile="false"/>
+  </junit>
+</target>  
+
+<target name="build" depends="clean, compile, jar" description="cleans, compiles and builds pot.jar">
 </target>
 
 </project>
