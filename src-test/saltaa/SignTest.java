@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import nperf.SaltTestData;
-import saltaa.SaltLibFactory.LibType;
 
 /**
  * Tests sign functions for a set of libraries.
@@ -16,16 +15,7 @@ import saltaa.SaltLibFactory.LibType;
 public class SignTest {
     @Parameterized.Parameters
     public static List<SaltLib> data() {
-        return Arrays.asList(javaLib());
-        //return Arrays.asList(javaLib(), nativeLib());  // TODO once other libs implemented, test all of them.
-    }
-    
-    private static SaltLib javaLib() {
-        return SaltLibFactory.getLib(LibType.JAVA);
-    }
-    
-    private static SaltLib nativeLib() {
-        return SaltLibFactory.getLib(LibType.NATIVE);
+        return SaltLibFactory.getAllLibs();
     }
     
     private SaltLib lib;
