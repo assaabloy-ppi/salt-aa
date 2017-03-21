@@ -1,5 +1,8 @@
 package saltaa;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Creates SaltLib instances.
  * 
@@ -13,6 +16,13 @@ public class SaltLibFactory {
     
     public static SaltLib getLib() {
         return getLib(LibType.BEST);
+    }
+    
+    /**
+     * Returns a list of all SaltLib implementations.
+     */
+    public static List<SaltLib> getAllLibs() {
+        return Arrays.asList((SaltLib) new JavaSaltLib());
     }
     
     public static SaltLib getLib(LibType type) {

@@ -16,6 +16,11 @@ public interface SaltLib {
     public static final int crypto_sign_PUBLICKEYBYTES = 32;
     public static final int crypto_sign_SECRETKEYBYTES = 64;
     public static final int crypto_sign_BYTES = 64;
+    
+    /**
+     * Returns the name of the SaltLib implementation.
+     */
+    public String getName();
  
     /**
      * The crypto_sign_keypair_seeded function takes a secret key and generates 

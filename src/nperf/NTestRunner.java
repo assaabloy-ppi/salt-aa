@@ -2,7 +2,6 @@ package nperf;
 
 import java.util.ArrayList;
 import java.util.Date;
-
 import saltaa.SaltLib;
 import saltaa.SaltLibFactory;
 import saltaa.SaltLibFactory.LibType;
@@ -62,6 +61,23 @@ public class NTestRunner {
     
     private void createTests() {
         this.tests = new ArrayList<NTest>();
+        
+        
+        
+        tests.add(new NTest() {
+            byte[] sk = SaltTestData.aSigSec.clone();
+            byte[] pk = new byte[SaltLib.crypto_sign_PUBLICKEYBYTES];
+            
+            public String name() {
+                return "crypto_sign_keypair_not_random";
+            }
+
+            @Override
+            public void run() {
+                lib.crypto_sign_keypair_not_random(pk, sk);
+            }
+        });
+        
         
         tests.add(new NTest() {
             byte[] m = new byte[1];

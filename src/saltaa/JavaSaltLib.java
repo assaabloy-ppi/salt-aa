@@ -3,9 +3,14 @@ package saltaa;
 import com.iwebpp.crypto.TweetNaclFast;
 
 /**
- * Pure Java implementation based on https://github.com/InstantWebP2P/tweetnacl-java.
+ * Pure Java implementation of SaltLib based on https://github.com/InstantWebP2P/tweetnacl-java.
  */
 public class JavaSaltLib implements SaltLib {
+
+    @Override
+    public String getName() {
+        return "JAVA";
+    }
     
     @Override
     public void crypto_sign_keypair_not_random(byte[] pk, byte[] sk) {
