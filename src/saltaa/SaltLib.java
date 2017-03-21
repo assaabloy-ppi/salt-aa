@@ -30,7 +30,7 @@ public interface SaltLib {
      * @param sk Input secret key.
      * @throws IllegalArgumentException If one of the parameters is not of the correct size.
      */
-    public void crypto_sign_keypair_seeded(byte[] pk, byte[] sk);
+    public void crypto_sign_keypair_not_random(byte[] pk, byte[] sk);
     
     /**
      * The crypto_sign function signs a message m[0], ..., m[mlen-1] using the signer's secret 
@@ -46,7 +46,8 @@ public interface SaltLib {
      * The crypto_sign_open function verifies the signature in sm[0], ..., sm[smlen-1] 
      * using the signer's public key pk[0], pk[1], ..., pk[crypto_sign_PUBLICKEYBYTES-1]. 
      * The crypto_sign_open function puts the message into m[0], m[1], ..., m[mlen-1].
-     * If the signature fails verification, crypto_sign_open instead returns -1, 
+     * The caller must allocate at least sm.length bytes for m. 
+     * If the signature fails verification, crypto_sign_open throws BadSignature, 
      * possibly after modifying m[0], m[1], etc. 
      * mlen is sm.length-crypto_sign_BYTES.
      * 

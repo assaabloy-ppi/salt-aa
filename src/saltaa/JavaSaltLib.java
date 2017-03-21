@@ -8,7 +8,7 @@ import com.iwebpp.crypto.TweetNaclFast;
 public class JavaSaltLib implements SaltLib {
     
     @Override
-    public void crypto_sign_keypair_seeded(byte[] pk, byte[] sk) {
+    public void crypto_sign_keypair_not_random(byte[] pk, byte[] sk) {
         TweetNaclFast.crypto_sign_keypair(pk, sk, true);
     }
 

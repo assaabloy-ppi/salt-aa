@@ -1,4 +1,4 @@
-package saltaa;
+package nperf;
 
 public class SaltTestData {    
     public static byte[] aSigSec = Hex.toBytes("55f4d1d198093c84de9ee9a6299e0f6891c2e1d0b369efb592a9e3f169fb0f795529ce8ccf68c0b8ac19d437ab0f5b32723782608e93c6264f184ba152c2357b");
