@@ -14,7 +14,7 @@ package saltaa;
 public interface SaltLib {
 
     public static final int crypto_sign_PUBLICKEYBYTES = 32;
-    public static final int crypto_sign_SECRETKEYBYTES = 64;
+    public static final int crypto_sign_SECRETKEYBYTES = 32;
     public static final int crypto_sign_BYTES = 64;
     
     /**

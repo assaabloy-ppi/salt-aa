@@ -30,5 +30,6 @@ public class JavaSaltLib implements SaltLib {
         if (res != 0) {
             throw new BadSignature();
         }
+        System.arraycopy(m, SaltLib.crypto_sign_BYTES, m, 0, sm.length-SaltLib.crypto_sign_BYTES);
     }
 }

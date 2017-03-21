@@ -48,8 +48,8 @@ public class SignTest {
         
         lib.crypto_sign_open(m2, sm, pk);
         
-        byte[] m3 = Arrays.copyOfRange(m2, SaltLib.crypto_sign_BYTES, m2.length);        
-        Assert.assertArrayEquals(m, m3);
+        //byte[] m3 = Arrays.copyOfRange(m2, SaltLib.crypto_sign_BYTES, m2.length);
+        Assert.assertArrayEquals(m, Arrays.copyOf(m2, m.length));
     }
     
     @Test(expected=BadSignature.class)
