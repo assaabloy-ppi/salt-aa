@@ -9,7 +9,7 @@ public class JavaSaltLib implements SaltLib {
 
     @Override
     public String getName() {
-        return "JAVA";
+        return "java-instantwebp2p";
     }
     
     @Override

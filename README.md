@@ -18,8 +18,9 @@ crypto_sign and related functions implement the ed25519 signature scheme.
 crypto_box and related functions implement public key authenticated encryption 
 using x25519+xsalsa20+poly1305.
 
-Our approach is to follow the original TweetNaCl/NaCl C API closely.
-This is a low-level API.
+Our approach is to follow the original TweetNaCl/NaCl C API closely
+as documented at [NACL] and implemented in the TweetNaCl source code
+available at [TWEET-2].
 
 Changes from original, comments, implementation approach, etc:
 
@@ -40,9 +41,10 @@ Changes from original, comments, implementation approach, etc:
 References
 ==========
 
-* [TWEET-1]. Daniel J. Bernstein, Bernard van Gastel, Wesley Janssen, Tanja Lange, 
+* **TWEET-1**. Daniel J. Bernstein, Bernard van Gastel, Wesley Janssen, Tanja Lange, 
   Peter Schwabe, Sjaak Smetsers. 
   *TweetNaCl: a crypto library in 100 tweets*. LatinCrypt 2014, to appear.
   
-* [TWEET-2]. Website: http://tweetnacl.cr.yp.to.
+* **TWEET-2**. Website: http://tweetnacl.cr.yp.to.
 
+* **NACL**. Website: http://nacl.cr.yp.to.

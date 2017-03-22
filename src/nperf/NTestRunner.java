@@ -54,15 +54,21 @@ public class NTestRunner {
      * Runs the tests.
      */
     public static void main(String[] args) {
-        NTestRunner r = new NTestRunner(SaltLibFactory.getLib(LibType.JAVA));
+        for (SaltLib lib : SaltLibFactory.getAllLibs()) {
+            runNPerf(lib);
+        }
+    }
+    
+    private static void runNPerf(SaltLib lib) {
+        NTestRunner r = new NTestRunner(lib);
         r.run();
+        
+        System.out.println("=========================================");
         System.out.println(r.report());
     }
     
     private void createTests() {
         this.tests = new ArrayList<NTest>();
-        
-        
         
         tests.add(new NTest() {
             byte[] sk = SaltTestData.aSigSec.clone();
@@ -151,9 +157,10 @@ public class NTestRunner {
     
 
     private void addReportHeader(StringBuffer b) {
-        b.append("RESULTS OF NPERF (saltaa.nperf)\n");
+        b.append("RESULTS OF NPERF\n");
         b.append("\n");
-        b.append("Software: " + this.getClass().getName() + "\n");
+        b.append("SaltLib: " + lib.getName() + "\n");
+        b.append("NPerf software: " + this.getClass().getName() + "\n");
         b.append("Time: " + new Date() + "\n");
         b.append("os.name: " + System.getProperty("os.name") + "\n");
         b.append("java.version: " + System.getProperty("java.version") + "\n");
