@@ -13,13 +13,13 @@ import nperf.SaltTestData;
  */
 @RunWith(Parameterized.class)
 public class SignTest {
+    private SaltLib lib;
+    
     @Parameterized.Parameters
     public static List<SaltLib> data() {
         return SaltLibFactory.getAllLibs();
     }
     
-    private SaltLib lib;
-   
     public SignTest(SaltLib lib) {
         this.lib = lib;
     }

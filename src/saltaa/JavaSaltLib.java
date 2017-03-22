@@ -32,4 +32,40 @@ public class JavaSaltLib implements SaltLib {
         }
         System.arraycopy(m, SaltLib.crypto_sign_BYTES, m, 0, sm.length-SaltLib.crypto_sign_BYTES);
     }
+
+    @Override
+    public void crypto_box_keypair_not_random(byte[] pk, byte[] sk) {
+        TweetNaclFast.crypto_box_keypair_not_random(pk, sk);
+    }
+
+    @Override
+    public void crypto_box_beforenm(byte[] k, byte[] pk, byte[] sk) {
+        TweetNaclFast.crypto_box_beforenm(k, pk, sk);
+    }
+
+    @Override
+    public void crypto_box_afternm(byte[] c, byte[] m, byte[] n, byte[] k) {
+        int mlen = m.length;
+        
+        if (m.length < SaltLib.crypto_box_ZEROBYTES) {
+            throw new IllegalArgumentException("m is too short");
+        }
+        
+        int result = TweetNaclFast.crypto_box_afternm(c, m, mlen, n, k);
+        if (result != 0) {
+            throw new IllegalArgumentException("TweetNaclFast.crypto_box_afternm returned " + result);
+        }
+    }
+
+    @Override
+    public void crypto_box_open_afternm(byte[] m, byte[] c, byte[] n, byte[] k) {
+        if (c.length < SaltLib.crypto_box_BOXZEROBYTES) {
+            throw new IllegalArgumentException("c is too short, " + c.length);
+        }
+        
+        int result = TweetNaclFast.crypto_box_open_afternm(m, c, c.length, n, k);
+        if (result != 0) {
+            throw new BadEncryptedData();
+        }
+    }
 }

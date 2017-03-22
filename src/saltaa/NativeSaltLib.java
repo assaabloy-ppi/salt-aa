@@ -4,20 +4,24 @@ import org.libsodium.jni.SodiumJNI;
 
 /**
  * libsodium-jni based implementation of SaltLib based on https://github.com/joshjdevl/libsodium-jni
+ * 
+ * @author Alex Reshniuk
  */
 public class NativeSaltLib implements SaltLib {
-
-    static {
-        System.loadLibrary("sodiumjni");
-    }
-   
-    private static SodiumJNI sodiumJNI() {
-        SodiumJNI.sodium_init();
-        return SingletonHolder.SODIUMJNI_INSTANCE;
-    }
+    private static final Object LIB_SYNC = new Object();
+    private static SodiumJNI SODIUMJNI_INSTANCE;
     
-    private static final class SingletonHolder {
-        public static final SodiumJNI SODIUMJNI_INSTANCE = new SodiumJNI();
+    public NativeSaltLib() {
+        synchronized (LIB_SYNC) {
+            if (SODIUMJNI_INSTANCE == null) {
+                System.loadLibrary("sodiumjni");
+                SODIUMJNI_INSTANCE = new SodiumJNI();
+                int result = SodiumJNI.sodium_init();
+                if (result != 0) {
+                    throw new Error("Lib init error, SodiumJNI.sodium_init() returned " + result);
+                }
+            }
+        }
     }
 
     @Override
@@ -43,5 +47,29 @@ public class NativeSaltLib implements SaltLib {
         if (res != 0) {
             throw new BadSignature();
         }
+    }
+
+    @Override
+    public void crypto_box_keypair_not_random(byte[] pk, byte[] sk) {
+        // TODO Auto-generated method stub
+        throw new Error("not implemented");
+    }
+
+    @Override
+    public void crypto_box_beforenm(byte[] k, byte[] pk, byte[] sk) {
+        // TODO Auto-generated method stub
+        throw new Error("not implemented");
+    }
+
+    @Override
+    public void crypto_box_afternm(byte[] c, byte[] m, byte[] n, byte[] k) {
+        // TODO Auto-generated method stub
+        throw new Error("not implemented");
+    }
+
+    @Override
+    public void crypto_box_open_afternm(byte[] m, byte[] c, byte[] n, byte[] k) {
+        // TODO Auto-generated method stub
+        throw new Error("not implemented");
     }
 }

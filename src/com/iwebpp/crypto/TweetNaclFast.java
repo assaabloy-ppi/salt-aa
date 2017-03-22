@@ -2507,6 +2507,11 @@ public final class TweetNaclFast {
 		randombytes(x,32);
 		return crypto_scalarmult_base(y,x);
 	}
+	
+	// CHANGE added this method
+	public static int crypto_box_keypair_not_random(byte[] pk, byte[] sk) {
+	    return crypto_scalarmult_base(pk, sk);
+	}
 
 	public static int crypto_box_beforenm(byte []k,byte []y,byte []x)
 	{

@@ -55,7 +55,12 @@ public class NTestRunner {
      */
     public static void main(String[] args) {
         for (SaltLib lib : SaltLibFactory.getAllLibs()) {
-            runNPerf(lib);
+            try {
+                runNPerf(lib);
+            } catch (Throwable t) {
+                System.out.println("ERROR when running " + lib.getName() + ".");
+                t.printStackTrace(System.out);
+            }
         }
     }
     
@@ -69,6 +74,34 @@ public class NTestRunner {
     
     private void createTests() {
         this.tests = new ArrayList<NTest>();
+        
+        tests.add(new NTest() {
+            byte[] sk = SaltTestData.aSigSec.clone();
+            byte[] pk = new byte[SaltLib.crypto_box_PUBLICKEYBYTES];
+            
+            public String name() {
+                return "crypto_box_keypair_not_random";
+            }
+            
+            public void run() {
+                lib.crypto_box_keypair_not_random(pk, sk);
+            }
+        });
+        
+        tests.add(new NTest() {
+            byte[] sk = SaltTestData.aEncSec.clone();
+            byte[] pk = SaltTestData.bEncPub.clone();
+            byte[] k = new byte[SaltLib.crypto_box_BEFORENMBYTES];
+            
+            public String name() {
+                return "crypto_box_beforenm";
+            }
+            
+            public void run() {
+                lib.crypto_box_beforenm(k, pk, sk);
+            }
+        });
+        
         
         tests.add(new NTest() {
             byte[] sk = SaltTestData.aSigSec.clone();
