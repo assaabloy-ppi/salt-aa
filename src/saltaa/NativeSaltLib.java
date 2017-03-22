@@ -2,6 +2,8 @@ package saltaa;
 
 import org.libsodium.jni.SodiumJNI;
 
+import com.iwebpp.crypto.TweetNaclFast;
+
 /**
  * libsodium-jni based implementation of SaltLib based on https://github.com/joshjdevl/libsodium-jni
  * 
@@ -51,25 +53,38 @@ public class NativeSaltLib implements SaltLib {
 
     @Override
     public void crypto_box_keypair_not_random(byte[] pk, byte[] sk) {
-        // TODO Auto-generated method stub
-        throw new Error("not implemented");
+    	SodiumJNI.crypto_scalarmult_base(pk, sk);
     }
 
     @Override
     public void crypto_box_beforenm(byte[] k, byte[] pk, byte[] sk) {
-        // TODO Auto-generated method stub
-        throw new Error("not implemented");
+    	SodiumJNI.crypto_box_beforenm(k, pk, sk);
     }
 
     @Override
     public void crypto_box_afternm(byte[] c, byte[] m, byte[] n, byte[] k) {
-        // TODO Auto-generated method stub
-        throw new Error("not implemented");
+        int mlen = m.length;
+        
+        if (m.length < SaltLib.crypto_box_ZEROBYTES) {
+            throw new IllegalArgumentException("m is too short");
+        }
+        
+        int result = SodiumJNI.crypto_box_afternm(c, m, mlen, n, k);
+        if (result != 0) {
+            throw new IllegalArgumentException("SodiumJNI.crypto_box_afternm " + result);
+        }    	
     }
 
     @Override
     public void crypto_box_open_afternm(byte[] m, byte[] c, byte[] n, byte[] k) {
-        // TODO Auto-generated method stub
-        throw new Error("not implemented");
+        if (c.length < SaltLib.crypto_box_BOXZEROBYTES) {
+            throw new IllegalArgumentException("c is too short, " + c.length);
+        }
+        
+        int result = SodiumJNI.crypto_box_open_afternm(m, c, c.length, n, k);
+        if (result != 0) {
+            throw new BadEncryptedData();
+        }
     }
-}
+    
+   }
