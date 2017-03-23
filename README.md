@@ -20,6 +20,15 @@ Our approach is to follow the original TweetNaCl/NaCl C API closely
 as documented at [NACL] and implemented in the TweetNaCl source code
 available at [TWEET-2].
 
+Two implementations are supported
+
+1. The pure Java implementation from 
+   https://github.com/InstantWebP2P/.
+   
+2. The native Libsodium implementation that is typically
+much faster than the Java version. See: 
+    https://download.libsodium.org/doc/
+
 Comments, implementation approach, etc:
 
 * Unlike the TweetNaCl original, this library does not depend on random 
@@ -38,6 +47,8 @@ Comments, implementation approach, etc:
 * Input arguments are not normally checked. 
   For example, a NullPointerException may be thrown when an argument is null
   the first time the argument is used.
+
+salt-aa is "Powered by Curve25519".
 
 
 References

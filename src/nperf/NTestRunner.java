@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import saltaa.SaltLib;
 import saltaa.SaltLibFactory;
-import saltaa.SaltLibFactory.LibType;
 
 /**
  * Runs the tests.
