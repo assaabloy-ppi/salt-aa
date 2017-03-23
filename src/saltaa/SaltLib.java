@@ -61,7 +61,7 @@ public interface SaltLib {
      * possibly after modifying m[0], m[1], etc. 
      * mlen is sm.length-crypto_sign_BYTES.
      * 
-     * @throws BadSignature
+     * @throws BadSignatureException
      * @throws IllegalArgumentException
      */
     public void crypto_sign_open(byte[] m, byte[] sm, byte[] pk);
@@ -124,7 +124,7 @@ public interface SaltLib {
      * The crypto_box_open function ensures (in case of success) that the first 
      * crypto_box_ZEROBYTES bytes of the plaintext m are all 0. 
      * 
-     * @throws BadEncryptedData
+     * @throws BadEncryptedDataException
      */
     public void crypto_box_open_afternm(byte[] m, byte[] c, byte[] n, byte[] k);
 }

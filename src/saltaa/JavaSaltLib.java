@@ -28,7 +28,7 @@ public class JavaSaltLib implements SaltLib {
         long dummy = 0;
         int res = TweetNaclFast.crypto_sign_open(m, dummy, sm, 0, sm.length, pk);
         if (res != 0) {
-            throw new BadSignature();
+            throw new BadSignatureException();
         }
         System.arraycopy(m, SaltLib.crypto_sign_BYTES, m, 0, sm.length-SaltLib.crypto_sign_BYTES);
     }
@@ -65,7 +65,7 @@ public class JavaSaltLib implements SaltLib {
         
         int result = TweetNaclFast.crypto_box_open_afternm(m, c, c.length, n, k);
         if (result != 0) {
-            throw new BadEncryptedData();
+            throw new BadEncryptedDataException();
         }
     }
 }

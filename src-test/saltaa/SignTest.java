@@ -17,7 +17,7 @@ public class SignTest {
     
     @Parameterized.Parameters
     public static List<SaltLib> data() {
-        return SaltLibFactory.getAllLibs();
+        return SaltLibFactory.getAllOperationalLibs();
     }
     
     public SignTest(SaltLib lib) {
@@ -52,7 +52,7 @@ public class SignTest {
         Assert.assertArrayEquals(m, Arrays.copyOf(m2, m.length));
     }
     
-    @Test(expected=BadSignature.class)
+    @Test(expected=BadSignatureException.class)
     public void testBadSignature() {
         byte[] m = new byte[]{1};
         byte[] sm = new byte[SaltLib.crypto_sign_BYTES + m.length];

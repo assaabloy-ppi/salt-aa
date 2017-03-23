@@ -17,7 +17,7 @@ public class BoxTest {
     
     @Parameterized.Parameters
     public static List<SaltLib> data() {
-        return SaltLibFactory.getAllLibs();
+        return SaltLibFactory.getAllOperationalLibs();
     }
     
     public BoxTest(SaltLib lib) {
@@ -99,7 +99,7 @@ public class BoxTest {
      * Tests encrypting a 1-byte long message 'A', modifies the ciphertext 
      * and expects 
      */
-    @Test(expected=BadEncryptedData.class)
+    @Test(expected=BadEncryptedDataException.class)
     public void testBox2() {
         byte[] ask = SaltTestData.aEncSec;
         byte[] apk = SaltTestData.aEncPub;

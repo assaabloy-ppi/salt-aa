@@ -47,7 +47,7 @@ public class NativeSaltLib implements SaltLib {
         int[] dummy = new int[1];             
 		int res = SodiumJNI.crypto_sign_open(m, dummy, sm, sm.length, pk);
         if (res != 0) {
-            throw new BadSignature();
+            throw new BadSignatureException();
         }
     }
 
@@ -83,7 +83,7 @@ public class NativeSaltLib implements SaltLib {
         
         int result = SodiumJNI.crypto_box_open_afternm(m, c, c.length, n, k);
         if (result != 0) {
-            throw new BadEncryptedData();
+            throw new BadEncryptedDataException();
         }
     }
     

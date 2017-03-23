@@ -6,8 +6,8 @@ package saltaa;
  * 
  * @author Frans Lundberg
  */
-public class BadEncryptedData extends RuntimeException {
+public class BadEncryptedDataException extends RuntimeException {
     private static final long serialVersionUID = 1L;
     
-    public BadEncryptedData() {}
+    public BadEncryptedDataException() {}
 }

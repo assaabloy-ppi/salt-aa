@@ -54,7 +54,7 @@ public class NTestRunner {
      * Runs the tests.
      */
     public static void main(String[] args) {
-        for (SaltLib lib : SaltLibFactory.getAllLibs()) {
+        for (SaltLib lib : SaltLibFactory.getAllOperationalLibs()) {
             try {
                 runNPerf(lib);
             } catch (Throwable t) {

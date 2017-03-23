@@ -5,8 +5,8 @@ package saltaa;
  * 
  * @author Frans Lundberg
  */
-public class BadSignature extends RuntimeException {
+public class BadSignatureException extends RuntimeException {
     private static final long serialVersionUID = 1L;
     
-    public BadSignature() {}
+    public BadSignatureException() {}
 }
