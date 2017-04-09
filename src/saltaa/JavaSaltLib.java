@@ -68,4 +68,9 @@ public class JavaSaltLib implements SaltLib {
             throw new BadEncryptedDataException();
         }
     }
+
+    @Override
+    public void crypto_hash(byte[] h, byte[] m) {
+        TweetNaclFast.crypto_hash(h, m);
+    }
 }

@@ -11,6 +11,7 @@ A Java API to TweetNaCl implementations. The following subset of the
 * crypto_box_beforenm.
 * crypto_box_afternm.
 * crypto_box_open_afternm.
+* crypto_hash.
 
 crypto_sign_x functions implement the ed25519 signature scheme.
 crypto_box_x functions implement public key authenticated encryption 

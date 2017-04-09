@@ -86,5 +86,10 @@ public class NativeSaltLib implements SaltLib {
             throw new BadEncryptedDataException();
         }
     }
+
+    @Override
+    public void crypto_hash(byte[] h, byte[] m) {
+        SodiumJNI.crypto_hash_sha512(h, m, m.length);
+    }    
     
    }

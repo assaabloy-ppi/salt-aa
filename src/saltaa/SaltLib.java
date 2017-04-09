@@ -127,4 +127,17 @@ public interface SaltLib {
      * @throws BadEncryptedDataException
      */
     public void crypto_box_open_afternm(byte[] m, byte[] c, byte[] n, byte[] k);
+
+
+    // ======== crypto_hash ========
+    
+    public static final int crypto_hash_BYTES = 64;
+
+    /** The crypto_hash function hashes a message m. It returns a hash h. The output
+     * length h.size() is always crypto_hash_BYTES.
+     * crypto_hash() is currently an implementation of SHA-512.
+     * The crypto_hash function hashes a message m[0], m[1], ..., m[mlen-1]. 
+     * It puts the hash into h[0], h[1], ..., h[crypto_hash_BYTES-1].
+     */
+    public void crypto_hash(byte[] h, byte[] m);
 }
