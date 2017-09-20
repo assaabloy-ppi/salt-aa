@@ -69,6 +69,12 @@ call SaltLibFactory.getLib(LibType.JAVA) or SaltLib.getLib(LibType.NATIVE).
 The build the lib, use ANT and build.xml.
 
 
+Performance testing
+===================
+
+See src/nperf for performance testing. Run the class nperf.NTestRunner.
+
+
 
 References
 ==========
