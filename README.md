@@ -52,6 +52,24 @@ Comments, implementation approach, etc:
 salt-aa is "Powered by Curve25519".
 
 
+Usage
+=====
+
+To use the lib:
+
+1. Create a SaltLib instance with:
+
+    SaltLib lib = SaltLibFactory.getLib()
+    
+2. Then use the lib instance.
+
+If you want to choose implementation specifically, 
+call SaltLibFactory.getLib(LibType.JAVA) or SaltLib.getLib(LibType.NATIVE).
+
+The build the lib, use ANT and build.xml.
+
+
+
 References
 ==========
 

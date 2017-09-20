@@ -1,10 +1,17 @@
-170321 tue
-==========
+170920
+======
+
+We are using this lib. It works fine. Removed some warnings
+from source and refreshed things today. Minor work.
+
+
+170321
+======
 
 Notes on TweetNaCl performance on Android
 -----------------------------------------
 
-By Frans. Last night, I created a Github repo called assaabloy-ppi/salt-aa.
+By Frans: Last night, I created a Github repo called assaabloy-ppi/salt-aa.
 To create TweetNaCl API. Created API with unit tests and performance tests for 
 three crypto_sign_x functions.
 
