@@ -1,4 +1,4 @@
-package nperf;
+package saltaa.nperf;
 
 public abstract class NTest {
     

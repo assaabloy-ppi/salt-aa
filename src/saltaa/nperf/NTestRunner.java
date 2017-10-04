@@ -1,4 +1,4 @@
-package nperf;
+package saltaa.nperf;
 
 import java.util.ArrayList;
 import java.util.Date;
