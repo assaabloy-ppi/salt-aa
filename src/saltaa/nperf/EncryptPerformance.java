@@ -60,6 +60,7 @@ public class EncryptPerformance {
 /*
 
 Typical output, Frans's work laptop, 2018-01-02.
+(Intel Core i5-4310U CPU @ 2.00GHz × 4). 64-bit Ubuntu.
 
     ======== saltaa.nperf.EncryptPerformance ========
     SaltLib: libsodium-jni
