@@ -69,10 +69,22 @@ call SaltLibFactory.getLib(LibType.JAVA) or SaltLib.getLib(LibType.NATIVE).
 The build the lib, use ANT and build.xml.
 
 
+Development
+===========
+
+To create a Java Eclipse project:
+
+* Add src/ and src-test/ to source path.
+* Add native libs according to lib-native/readme.md.
+* Set out/classes as output for compiled Java classes.
+
+
+
 Performance testing
 ===================
 
-See src/nperf for performance testing. Run the class nperf.NTestRunner.
+See package saltaa.nperf for performance testing. Run class nperf.NTestRunner
+or EncryptPerformance.
 
 
 

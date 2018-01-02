@@ -207,3 +207,62 @@ public class NTestRunner {
         b.append("\n");
     }
 }
+
+/*
+
+Results on Frans's work laptop (Intel Core i5-4310U CPU @ 2.00GHz × 4). 64-bit Ubuntu.
+
+=========================================
+RESULTS OF NPERF
+
+SaltLib: java-instantwebp2p
+NPerf software: saltaa.nperf.NTestRunner
+Time: Tue Jan 02 11:41:54 CET 2018
+os.name: Linux
+java.version: 1.7.0_79
+
+crypto_box_keypair_not_random
+    0.58 (1329)
+
+crypto_box_beforenm
+    0.58 (1555)
+
+crypto_sign_keypair_not_random
+    1.08 (754)
+
+crypto_sign_1
+    1.10 (846)
+
+crypto_sign_open_1
+    2.21 (429)
+
+
+=========================================
+RESULTS OF NPERF
+
+SaltLib: libsodium-jni
+NPerf software: saltaa.nperf.NTestRunner
+Time: Tue Jan 02 11:41:59 CET 2018
+os.name: Linux
+java.version: 1.7.0_79
+
+crypto_box_keypair_not_random
+    0.05 (19167)
+
+crypto_box_beforenm
+    0.05 (17243)
+
+crypto_sign_keypair_not_random
+    0.05 (18379)
+
+crypto_sign_1
+    0.05 (17911)
+
+crypto_sign_open_1
+    0.14 (6753)
+
+
+
+  
+*/
+
