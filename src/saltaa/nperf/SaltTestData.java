@@ -1,5 +1,8 @@
 package saltaa.nperf;
 
+import saltaa.SaltLib;
+import saltaa.SaltLibFactory;
+
 
 /**
  * NaCl test data. aEnc, bEnc, abSharedKey are taken from Bernstein's paper at
@@ -40,4 +43,17 @@ public class SaltTestData {
         ,0x3f,(byte)0x83,0x43,(byte)0xc8,0x5b,0x78,0x67,0x4d
         ,(byte)0xad,(byte)0xfc,0x7e,0x14,0x6f,(byte)0x88,0x2b,0x4f
     };
+
+    /**
+     * Signature of the empty byte string (m = new byte[0]) using the aSigSec secret key.
+     */
+    public static byte[] sig1 = Hex.toBytes("97b96e0a3b24bfadcb1a8764fea6953527ff9c5e4fd7fd92c361310b11258fbff410064eadfae41a0dd25cd34c5de495c8222048ca8dc0c790908579729f720c");
+    
+    public static void main(String[] args) {
+    	SaltLib lib = SaltLibFactory.getLib(SaltLibFactory.LibType.JAVA);
+        byte[] m = new byte[0];
+        byte[] sm = new byte[SaltLib.crypto_sign_BYTES + m.length];
+        lib.crypto_sign(sm, m, aSigSec);
+        System.out.println(Hex.create(sm));
+    }
 }

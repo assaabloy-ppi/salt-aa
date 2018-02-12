@@ -15,7 +15,7 @@ public class SaltLibFactory {
     private static LibHolder bestLib = new LibHolder();
     private static final Object LIB_SYNC = new Object();
 
-    public enum LibType { 
+    public static enum LibType { 
         JAVA, NATIVE, BEST
     }
     

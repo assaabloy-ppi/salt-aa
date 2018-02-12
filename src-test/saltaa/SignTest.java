@@ -6,7 +6,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
 import saltaa.nperf.SaltTestData;
 
 /**
@@ -66,5 +65,20 @@ public class SignTest {
         byte[] m2 = new byte[SaltLib.crypto_sign_BYTES + m.length];
         
         lib.crypto_sign_open(m2, sm, pk);
+    }
+    
+    @Test
+    public void testSig1A() {
+    	byte[] m = new byte[0];
+    	byte[] sm = new byte[SaltLib.crypto_sign_BYTES + m.length];
+    	lib.crypto_sign(sm, m, SaltTestData.aSigSec);
+    	Assert.assertEquals(64, SaltTestData.sig1.length);
+    	Assert.assertArrayEquals(SaltTestData.sig1, sm);
+    }
+    
+    @Test
+    public void testSig1B() {
+    	byte[] m = new byte[SaltTestData.sig1.length];
+    	lib.crypto_sign_open(m, SaltTestData.sig1, SaltTestData.aSigPub);
     }
 }
