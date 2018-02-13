@@ -46,8 +46,20 @@ public class SaltTestData {
 
     /**
      * Signature of the empty byte string (m = new byte[0]) using the aSigSec secret key.
+     * Created 2018-02 by Frans Lundberg.
      */
     public static byte[] sig1 = Hex.toBytes("97b96e0a3b24bfadcb1a8764fea6953527ff9c5e4fd7fd92c361310b11258fbff410064eadfae41a0dd25cd34c5de495c8222048ca8dc0c790908579729f720c");
+
+    /**
+     * The "r0" data below is from the first line of the file: 
+     * http://ed25519.cr.yp.to/python/sign.input.
+     * That is: test data from Daniel Bernstein. For his Python implementation.
+     */
+    public static byte[] r0SigSec = Hex.toBytes("9d61b19deffd5a60ba844af492ec2cc44449c5697b326919703bac031cae7f60d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a");
+    public static byte[] r0SigPub = Hex.toBytes("d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a");
+    public static byte[] r0Message = Hex.toBytes("");
+    public static byte[] r0SignedMessage = Hex.toBytes("e5564300c360ac729086e2cc806e828a84877f1eb8e5d974d873e065224901555fb8821590a33bacc61e39701cf9b46bd25bf5f0595bbe24655141438e7a100b");
+    
     
     public static void main(String[] args) {
     	SaltLib lib = SaltLibFactory.getLib(SaltLibFactory.LibType.JAVA);
