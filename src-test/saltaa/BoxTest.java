@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import saltaa.nperf.SaltTestData;
 
 /**
  * Tests crypto_box_x functions.

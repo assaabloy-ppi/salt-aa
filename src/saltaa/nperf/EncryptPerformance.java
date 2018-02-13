@@ -3,6 +3,7 @@ package saltaa.nperf;
 import java.io.PrintStream;
 import saltaa.SaltLib;
 import saltaa.SaltLibFactory;
+import saltaa.SaltTestData;
 import saltaa.SaltLibFactory.LibType;
 
 /**

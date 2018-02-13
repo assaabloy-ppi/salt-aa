@@ -3,7 +3,6 @@ package saltaa;
 import org.junit.Assert;
 import org.junit.Test;
 
-import saltaa.nperf.SaltTestData;
 
 /**
  * Tests with the "r0" data in SaltTestData.

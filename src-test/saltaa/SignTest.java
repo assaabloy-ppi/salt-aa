@@ -6,7 +6,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import saltaa.nperf.SaltTestData;
 
 /**
  * Tests sign functions for a set of libraries.

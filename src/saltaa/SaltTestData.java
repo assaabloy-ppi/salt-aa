@@ -1,7 +1,6 @@
-package saltaa.nperf;
+package saltaa;
 
-import saltaa.SaltLib;
-import saltaa.SaltLibFactory;
+import saltaa.nperf.Hex;
 
 
 /**
